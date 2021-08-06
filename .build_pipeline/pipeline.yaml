@@ -213,6 +213,8 @@ spec:
             mvn -Dmaven.repo.local=./m2/repository clean test;
             mkdir test-results
             cp -r target/* test-results/
+            ls -lart ./test-results/
+            cat ./test-results/surefire-reports/*.xml
             echo -n ./test-results/surefire-reports/*.xml > $(results.test-result-file-paths.path)
             echo -n unittest > $(results.test-types.path)            
       workspaces:
@@ -226,6 +228,8 @@ spec:
       params:
         - name: tests-script
           value: |
+            ls -lart ./test-results/site/jacoco
+            cat ./test-results/site/jacoco/*.xml
             echo -n ./test-results/site/jacoco/*.xml > $(results.test-result-file-paths.path)
             echo -n code > $(results.test-types.path)
       workspaces:
